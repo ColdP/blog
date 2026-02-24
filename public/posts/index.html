@@ -13,6 +13,17 @@
         <script src="/js/main.b7e084c9018569002038f4987c562080c431d24b235fd667bfe64102a4ff1b7f.js" integrity="sha256-t&#43;CEyQGFaQAgOPSYfFYggMQx0ksjX9Znv&#43;ZBAqT/G38=" crossorigin="anonymous"></script>
 
 
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (_) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -176,6 +187,13 @@
 
   
     <section>
+      <h2><a href="/posts/hello-world/">Hello World</a></h2>
+      <h1 id="hello-world">Hello World</h1>
+<p>在这里开始写正文。</p>
+<p><img src="https://ai5.btm-m.site/cover.jpg" alt="ai5"></p>
+    </section>
+  
+    <section>
       <h2><a href="/posts/post-3/">Post 3</a></h2>
       <p>Occaecat aliqua consequat laborum ut ex aute aliqua culpa quis irure esse magna dolore quis. Proident fugiat labore eu laboris officia Lorem enim. Ipsum occaecat cillum ut tempor id sint aliqua incididunt nisi incididunt reprehenderit. Voluptate ad minim sint est aute aliquip esse occaecat tempor officia qui sunt. Aute ex ipsum id ut in est velit est laborum incididunt. Aliqua qui id do esse sunt eiusmod id deserunt eu nostrud aute sit ipsum. Deserunt esse cillum Lorem non magna adipisicing mollit amet consequat.</p>
     </section>
@@ -201,13 +219,5 @@
 </div>
 
   </footer>
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 </body>
 </html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writer · btm_m's blog</title>
+  <style>
+    :root {
+      --md-sys-color-primary: #1e88e5;
+      --md-sys-color-on-primary: #ffffff;
+      --md-sys-color-primary-container: #bbdefb;
+      --md-sys-color-on-primary-container: #0d47a1;
+
+      --md-sys-color-surface: #fef7ff;
+      --md-sys-color-surface-container-low: #f7f2fa;
+      --md-sys-color-surface-container: #f3edf7;
+      --md-sys-color-surface-container-high: #ece6f0;
+      --md-sys-color-on-surface: #1d1b20;
+      --md-sys-color-on-surface-variant: #49454f;
+
+      --md-sys-color-background: #fef7ff;
+      --md-sys-color-on-background: #1d1b20;
+
+      --md-sys-color-outline: #79747e;
+      --md-sys-color-outline-variant: #cac4d0;
+
+      --md-sys-typescale-font-family: "Google Sans", "Inter", "MiSans", "Noto Sans SC", "LINESeedJP", sans-serif;
+      --md-sys-typescale-body-large-size: 16px;
+      --md-sys-typescale-body-large-line-height: 24px;
+      --md-sys-typescale-title-large-size: 22px;
+
+      --md-sys-shape-corner-small: 8px;
+      --md-sys-shape-corner-medium: 12px;
+      --md-sys-shape-corner-large: 16px;
+      --md-sys-shape-corner-extra-large: 28px;
+      --md-sys-shape-corner-full: 9999px;
+
+      --md-sys-spacing-xs: 4px;
+      --md-sys-spacing-sm: 8px;
+      --md-sys-spacing-md: 16px;
+      --md-sys-spacing-lg: 24px;
+      --md-sys-spacing-xl: 32px;
+
+      --page-max-width: 1320px;
+      --page-gutter: clamp(16px, 4.5vw, 28px);
+
+      --md-sys-elevation-level1: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      --md-sys-elevation-level2: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --md-sys-color-primary: #90caf9;
+        --md-sys-color-on-primary: #003258;
+        --md-sys-color-primary-container: #004a77;
+        --md-sys-color-on-primary-container: #cce5ff;
+
+        --md-sys-color-surface: #141218;
+        --md-sys-color-surface-container-low: #1d1b20;
+        --md-sys-color-surface-container: #211f26;
+        --md-sys-color-surface-container-high: #2b2930;
+        --md-sys-color-on-surface: #e6e0e9;
+        --md-sys-color-on-surface-variant: #cac4d0;
+
+        --md-sys-color-background: #141218;
+        --md-sys-color-on-background: #e6e0e9;
+
+        --md-sys-color-outline: #938f99;
+        --md-sys-color-outline-variant: #49454f;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--md-sys-typescale-font-family);
+      font-size: var(--md-sys-typescale-body-large-size);
+      line-height: var(--md-sys-typescale-body-large-line-height);
+      color: var(--md-sys-color-on-background);
+      background: var(--md-sys-color-background);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--page-max-width);
+      margin-inline: auto;
+      padding-inline: var(--page-gutter);
+      padding-block: var(--md-sys-spacing-lg);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--md-sys-spacing-md);
+      margin-bottom: var(--md-sys-spacing-lg);
+    }
+
+    .title {
+      margin: 0;
+      font-size: var(--md-sys-typescale-title-large-size);
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .hint {
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 14px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--md-sys-spacing-lg);
+    }
+
+    .panel {
+      background: var(--md-sys-color-surface-container);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: var(--md-sys-shape-corner-extra-large);
+      box-shadow: var(--md-sys-elevation-level1);
+      padding: var(--md-sys-spacing-lg);
+    }
+
+    .panel + .panel { margin-top: var(--md-sys-spacing-lg); }
+
+    .panel-title {
+      margin: 0 0 var(--md-sys-spacing-md) 0;
+      font-size: 18px;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--md-sys-spacing-md);
+    }
+
+    .field {
+      display: grid;
+      gap: var(--md-sys-spacing-xs);
+    }
+
+    .inline-action {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--md-sys-spacing-sm);
+      align-items: center;
+    }
+
+    .field.full { grid-column: 1 / -1; }
+
+    label {
+      font-size: 13px;
+      color: var(--md-sys-color-on-surface-variant);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      background: var(--md-sys-color-surface-container-high);
+      color: var(--md-sys-color-on-surface);
+      border-radius: var(--md-sys-shape-corner-medium);
+      padding: 10px 12px;
+      outline: none;
+      font: inherit;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--md-sys-color-primary);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--md-sys-color-primary) 22%, transparent);
+    }
+
+    textarea.editor {
+      min-height: 420px;
+      resize: vertical;
+      line-height: 1.65;
+    }
+
+    textarea.output {
+      min-height: 280px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--md-sys-spacing-sm);
+      margin-top: var(--md-sys-spacing-md);
+    }
+
+    button {
+      border: none;
+      border-radius: var(--md-sys-shape-corner-full);
+      padding: 10px 16px;
+      cursor: pointer;
+      font: inherit;
+      transition: transform .15s ease, opacity .2s ease;
+    }
+
+    button:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--md-sys-color-primary);
+      color: var(--md-sys-color-on-primary);
+    }
+
+    .btn-tonal {
+      background: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+    }
+
+    .md-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--md-sys-spacing-xs);
+      margin-bottom: var(--md-sys-spacing-sm);
+    }
+
+    .md-tool {
+      background: var(--md-sys-color-surface-container-high);
+      color: var(--md-sys-color-on-surface);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: var(--md-sys-shape-corner-full);
+      padding: 6px 12px;
+      font-size: 13px;
+      line-height: 1.2;
+    }
+
+    .preview {
+      min-height: 820px;
+      max-height: calc(100vh - 170px);
+      overflow: auto;
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: var(--md-sys-shape-corner-large);
+      background: var(--md-sys-color-surface-container-low);
+      padding: var(--md-sys-spacing-lg);
+    }
+
+    .preview h1, .preview h2, .preview h3 {
+      margin: 16px 0 8px;
+      color: var(--md-sys-color-on-surface);
+    }
+    .preview h1 { font-size: 28px; }
+    .preview h2 { font-size: 22px; }
+    .preview h3 { font-size: 18px; }
+
+    .preview p { margin: 0 0 12px; color: var(--md-sys-color-on-surface-variant); }
+    .preview ul, .preview ol { margin: 0 0 12px 1.2em; }
+    .preview li { margin: 4px 0; }
+    .preview blockquote {
+      margin: 0 0 12px;
+      border-left: 4px solid var(--md-sys-color-primary);
+      padding: 8px 12px;
+      background: color-mix(in srgb, var(--md-sys-color-primary) 8%, var(--md-sys-color-surface-container-low));
+      border-radius: 0 var(--md-sys-shape-corner-small) var(--md-sys-shape-corner-small) 0;
+    }
+    .preview code {
+      background: var(--md-sys-color-surface-container-high);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 90%;
+    }
+    .preview pre {
+      margin: 0 0 12px;
+      padding: 12px;
+      overflow: auto;
+      background: var(--md-sys-color-surface-container-high);
+      border: 1px solid var(--md-sys-color-outline-variant);
+      border-radius: var(--md-sys-shape-corner-small);
+    }
+    .preview pre code { border: 0; background: transparent; padding: 0; }
+    .preview a { color: var(--md-sys-color-primary); }
+
+    .footer-note {
+      margin-top: var(--md-sys-spacing-sm);
+      color: var(--md-sys-color-on-surface-variant);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1024px) {
+      .layout { grid-template-columns: 1fr; }
+      .preview { min-height: 380px; max-height: none; }
+    }
+
+    @media (max-width: 720px) {
+      .field-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="topbar">
+      <h1 class="title">Hugo Writer</h1>
+      <span class="hint">生成 TOML Front Matter + Markdown</span>
+    </div>
+
+    <div class="layout">
+      <section>
+        <article class="panel">
+          <h2 class="panel-title">Front Matter</h2>
+          <div class="field-grid">
+            <div class="field full">
+              <label for="title">Title</label>
+              <input id="title" type="text" placeholder="输入文章标题" />
+            </div>
+            <div class="field">
+              <label for="date">Date (ISO 8601)</label>
+              <div class="inline-action">
+                <input id="date" type="text" />
+                <button id="nowBtn" class="btn-tonal" type="button">当前时间</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="slug">Slug</label>
+              <input id="slug" type="text" placeholder="auto-generated-slug" />
+            </div>
+            <div class="field">
+              <label for="tags">Tags (逗号分隔)</label>
+              <input id="tags" type="text" placeholder="hugo, frontend, notes" />
+            </div>
+            <div class="field">
+              <label for="categories">Categories (逗号分隔)</label>
+              <input id="categories" type="text" placeholder="blog" />
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2 class="panel-title">Markdown 编辑区</h2>
+          <div class="md-toolbar" id="mdToolbar">
+            <button class="md-tool" type="button" data-md="h1">H1</button>
+            <button class="md-tool" type="button" data-md="h2">H2</button>
+            <button class="md-tool" type="button" data-md="bold">粗体</button>
+            <button class="md-tool" type="button" data-md="italic">斜体</button>
+            <button class="md-tool" type="button" data-md="link">链接</button>
+            <button class="md-tool" type="button" data-md="code">行内代码</button>
+            <button class="md-tool" type="button" data-md="quote">引用</button>
+            <button class="md-tool" type="button" data-md="ul">无序列表</button>
+            <button class="md-tool" type="button" data-md="ol">有序列表</button>
+            <button class="md-tool" type="button" data-md="hr">分割线</button>
+            <button class="md-tool" type="button" data-md="image">插入图片</button>
+          </div>
+          <textarea id="content" class="editor" placeholder="# 开始写作...\n\n这里输入 Markdown 正文。"></textarea>
+        </article>
+      </section>
+
+      <section>
+        <article class="panel">
+          <h2 class="panel-title">实时预览</h2>
+          <div id="preview" class="preview"></div>
+        </article>
+
+        <article class="panel">
+          <h2 class="panel-title">生成结果</h2>
+          <textarea id="output" class="output" readonly></textarea>
+          <div class="actions">
+            <button id="copyBtn" class="btn-primary" type="button">Copy to Clipboard</button>
+            <button id="downloadBtn" class="btn-tonal" type="button">Download .md</button>
+          </div>
+          <p class="footer-note">下载文件名格式：{date}-{slug}.md</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const el = {
+        title: document.getElementById('title'),
+        date: document.getElementById('date'),
+        slug: document.getElementById('slug'),
+        tags: document.getElementById('tags'),
+        categories: document.getElementById('categories'),
+        content: document.getElementById('content'),
+        output: document.getElementById('output'),
+        preview: document.getElementById('preview'),
+        copyBtn: document.getElementById('copyBtn'),
+        downloadBtn: document.getElementById('downloadBtn'),
+        nowBtn: document.getElementById('nowBtn'),
+        mdToolbar: document.getElementById('mdToolbar')
+      };
+
+      let slugTouched = false;
+
+      function nowISO() {
+        return new Date().toISOString();
+      }
+
+      function escapeTomlString(value) {
+        return String(value || '')
+          .replace(/\\/g, '\\\\')
+          .replace(/"/g, '\\"');
+      }
+
+      function parseCsv(text) {
+        return String(text || '')
+          .split(',')
+          .map(s => s.trim())
+          .filter(Boolean);
+      }
+
+      function createSlug(input) {
+        const base = String(input || '')
+          .trim()
+          .toLowerCase()
+          .normalize('NFKD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[’']/g, '')
+          .replace(/&/g, ' and ')
+          .replace(/[_\s]+/g, '-')
+          .replace(/[^\p{Letter}\p{Number}-]+/gu, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '');
+        return base || 'post';
+      }
+
+      function formatArrayToml(arr) {
+        return `[${arr.map(item => `"${escapeTomlString(item)}"`).join(', ')}]`;
+      }
+
+      function buildMarkdown() {
+        const title = el.title.value.trim();
+        const date = el.date.value.trim() || nowISO();
+        const slug = (el.slug.value.trim() || createSlug(title));
+        const tags = parseCsv(el.tags.value);
+        const categories = parseCsv(el.categories.value);
+        const content = el.content.value || '';
+
+        const frontMatter = [
+          '+++',
+          `title = "${escapeTomlString(title || 'Untitled')}"`,
+          `date = "${escapeTomlString(date)}"`,
+          `slug = "${escapeTomlString(slug)}"`,
+          `tags = ${formatArrayToml(tags)}`,
+          `categories = ${formatArrayToml(categories)}`,
+          '+++'
+        ].join('\n');
+
+        return `${frontMatter}\n\n${content}`;
+      }
+
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function parseInline(text) {
+        let s = escapeHtml(text);
+        s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+        s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+        s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+        s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+        return s;
+      }
+
+      function markdownToHtml(markdown) {
+        const lines = String(markdown || '').split(/\r?\n/);
+        const html = [];
+        let inUl = false;
+        let inOl = false;
+        let inCode = false;
+
+        function closeLists() {
+          if (inUl) { html.push('</ul>'); inUl = false; }
+          if (inOl) { html.push('</ol>'); inOl = false; }
+        }
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const trim = line.trim();
+
+          if (trim.startsWith('```')) {
+            closeLists();
+            if (!inCode) {
+              inCode = true;
+              html.push('<pre><code>');
+            } else {
+              inCode = false;
+              html.push('</code></pre>');
+            }
+            continue;
+          }
+
+          if (inCode) {
+            html.push(escapeHtml(line) + '\n');
+            continue;
+          }
+
+          if (!trim) {
+            closeLists();
+            continue;
+          }
+
+          if (/^###\s+/.test(trim)) {
+            closeLists();
+            html.push(`<h3>${parseInline(trim.replace(/^###\s+/, ''))}</h3>`);
+            continue;
+          }
+          if (/^##\s+/.test(trim)) {
+            closeLists();
+            html.push(`<h2>${parseInline(trim.replace(/^##\s+/, ''))}</h2>`);
+            continue;
+          }
+          if (/^#\s+/.test(trim)) {
+            closeLists();
+            html.push(`<h1>${parseInline(trim.replace(/^#\s+/, ''))}</h1>`);
+            continue;
+          }
+
+          if (/^>\s+/.test(trim)) {
+            closeLists();
+            html.push(`<blockquote>${parseInline(trim.replace(/^>\s+/, ''))}</blockquote>`);
+            continue;
+          }
+
+          if (/^[-*]\s+/.test(trim)) {
+            if (!inUl) { closeLists(); html.push('<ul>'); inUl = true; }
+            html.push(`<li>${parseInline(trim.replace(/^[-*]\s+/, ''))}</li>`);
+            continue;
+          }
+
+          if (/^\d+\.\s+/.test(trim)) {
+            if (!inOl) { closeLists(); html.push('<ol>'); inOl = true; }
+            html.push(`<li>${parseInline(trim.replace(/^\d+\.\s+/, ''))}</li>`);
+            continue;
+          }
+
+          closeLists();
+          html.push(`<p>${parseInline(trim)}</p>`);
+        }
+
+        if (inCode) html.push('</code></pre>');
+        closeLists();
+        return html.join('');
+      }
+
+      function getFileDatePart(dateISO) {
+        const m = String(dateISO || '').match(/^\d{4}-\d{2}-\d{2}/);
+        if (m) return m[0];
+        return new Date().toISOString().slice(0, 10);
+      }
+
+      function replaceSelection(prefix, suffix, fallbackText) {
+        const textarea = el.content;
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const selected = textarea.value.slice(start, end) || fallbackText;
+        const insertion = `${prefix}${selected}${suffix}`;
+        textarea.setRangeText(insertion, start, end, 'end');
+        textarea.focus();
+      }
+
+      function insertBlock(blockText) {
+        const textarea = el.content;
+        const start = textarea.selectionStart;
+        textarea.setRangeText(blockText, start, textarea.selectionEnd, 'end');
+        textarea.focus();
+      }
+
+      function handleMarkdownTool(action) {
+        switch (action) {
+          case 'h1':
+            insertBlock('# 标题\n');
+            break;
+          case 'h2':
+            insertBlock('## 小标题\n');
+            break;
+          case 'bold':
+            replaceSelection('**', '**', '加粗文本');
+            break;
+          case 'italic':
+            replaceSelection('*', '*', '斜体文本');
+            break;
+          case 'link':
+            replaceSelection('[', '](https://example.com)', '链接文字');
+            break;
+          case 'code':
+            replaceSelection('`', '`', 'code');
+            break;
+          case 'quote':
+            insertBlock('> 引用内容\n');
+            break;
+          case 'ul':
+            insertBlock('- 列表项 1\n- 列表项 2\n');
+            break;
+          case 'ol':
+            insertBlock('1. 列表项 1\n2. 列表项 2\n');
+            break;
+          case 'hr':
+            insertBlock('\n---\n');
+            break;
+          case 'image': {
+            const url = window.prompt('请输入图片 URL', 'https://example.com/image.jpg');
+            if (!url) return;
+            const alt = window.prompt('请输入图片描述(alt)', '图片描述') || '图片';
+            insertBlock(`![${alt}](${url})\n`);
+            break;
+          }
+          default:
+            return;
+        }
+        sync();
+      }
+
+      function sync() {
+        if (!slugTouched) {
+          el.slug.value = createSlug(el.title.value);
+        }
+
+        const md = buildMarkdown();
+        el.output.value = md;
+        el.preview.innerHTML = markdownToHtml(el.content.value);
+      }
+
+      async function copyOutput() {
+        const text = el.output.value;
+        try {
+          await navigator.clipboard.writeText(text);
+          el.copyBtn.textContent = 'Copied!';
+        } catch (_) {
+          el.output.select();
+          document.execCommand('copy');
+          el.copyBtn.textContent = 'Copied!';
+        }
+        setTimeout(() => { el.copyBtn.textContent = 'Copy to Clipboard'; }, 1200);
+      }
+
+      function downloadMarkdown() {
+        const datePart = getFileDatePart(el.date.value);
+        const slug = createSlug(el.slug.value || el.title.value);
+        const fileName = `${datePart}-${slug}.md`;
+        const blob = new Blob([el.output.value], { type: 'text/markdown;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      el.date.value = nowISO();
+      el.content.value = '# 新文章标题\n\n在这里开始写正文。\n\n- 支持 Markdown\n- 实时预览\n- 一键导出';
+
+      ['title', 'date', 'tags', 'categories', 'content'].forEach(key => {
+        el[key].addEventListener('input', sync);
+      });
+
+      el.slug.addEventListener('input', () => {
+        slugTouched = el.slug.value.trim().length > 0;
+        sync();
+      });
+
+      el.nowBtn.addEventListener('click', () => {
+        el.date.value = nowISO();
+        sync();
+      });
+
+      el.mdToolbar.addEventListener('click', (event) => {
+        const target = event.target.closest('[data-md]');
+        if (!target) return;
+        handleMarkdownTool(target.dataset.md);
+      });
+
+      el.copyBtn.addEventListener('click', copyOutput);
+      el.downloadBtn.addEventListener('click', downloadMarkdown);
+
+      sync();
+    })();
+  </script>
+</body>
+</html>

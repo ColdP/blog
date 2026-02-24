@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on btm_m&#39;s blog</title>
+    <link>https://example.org/categories/blog/</link>
+    <description>Recent content in Blog on btm_m&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Feb 2026 16:59:56 +0000</lastBuildDate>
+    <atom:link href="https://example.org/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello World</title>
+      <link>https://example.org/posts/hello-world/</link>
+      <pubDate>Tue, 24 Feb 2026 16:59:56 +0000</pubDate>
+      <guid>https://example.org/posts/hello-world/</guid>
+      <description>&lt;h1 id=&#34;hello-world&#34;&gt;Hello World&lt;/h1&gt;&#xA;&lt;p&gt;在这里开始写正文。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://ai5.btm-m.site/cover.jpg&#34; alt=&#34;ai5&#34;&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

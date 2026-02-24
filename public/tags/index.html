@@ -13,6 +13,17 @@
         <script src="/js/main.b7e084c9018569002038f4987c562080c431d24b235fd667bfe64102a4ff1b7f.js" integrity="sha256-t&#43;CEyQGFaQAgOPSYfFYggMQx0ksjX9Znv&#43;ZBAqT/G38=" crossorigin="anonymous"></script>
 
 
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (_) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -174,6 +185,10 @@
   <h1>Tags</h1>
   
   
+    <h2><a href="/tags/btm_m/">Btm_m</a></h2>
+  
+    <h2><a href="/tags/test/">Test</a></h2>
+  
     <h2><a href="/tags/blue/">Blue</a></h2>
   
     <h2><a href="/tags/green/">Green</a></h2>
@@ -189,13 +204,5 @@
 </div>
 
   </footer>
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 </body>
 </html>

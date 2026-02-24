@@ -14,6 +14,17 @@
       <script src="/js/main.js"></script>
 
 
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme;
+      } catch (_) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -203,13 +214,5 @@ excepteur excepteur pariatur nostrud qui irure ullamco.</p>
 </div>
 
   </footer>
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
 </body>
 </html>
