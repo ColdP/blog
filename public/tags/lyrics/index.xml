@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on btm_m&#39;s blog</title>
-    <link>https://blog.btm-m.site/posts/</link>
-    <description>Recent content in Posts on btm_m&#39;s blog</description>
+    <title>Lyrics on btm_m&#39;s blog</title>
+    <link>https://blog.btm-m.site/tags/lyrics/</link>
+    <description>Recent content in Lyrics on btm_m&#39;s blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 24 Feb 2026 17:44:06 +0000</lastBuildDate>
-    <atom:link href="https://blog.btm-m.site/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.btm-m.site/tags/lyrics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>当事者</title>
       <link>https://blog.btm-m.site/posts/dang-shi-zhe/</link>
       <pubDate>Tue, 24 Feb 2026 17:44:06 +0000</pubDate>
       <guid>https://blog.btm-m.site/posts/dang-shi-zhe/</guid>
       <description>&lt;h2 id=&#34;lyrics--music-ryosupercell&#34;&gt;Lyrics &amp;amp; Music: ryo(supercell)&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;幸せを願った　だけど私の目に見えたのは&#xA;祈愿着幸福　然而映入我眼帘的却是&#xA;誰かの愛が違う誰かの愛を殺す世界で&#xA;在某人的爱将另一个人的爱抹杀的世界里&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;この手に握った黒鉄&#xA;紧握在这手中的黑铁&#xA;あとどれだけ理性を保っていられるのだろう&#xA;究竟还能维持多久的理性呢&#xA;それとも私はもう狂ってるの？わからない&#xA;还是说我已经疯了？我不知道&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;どんなに未来を描いて　望み　もがいても届かない&#xA;无论怎样描绘未来　期望　挣扎也无法触及&#xA;何が正しさだと言うの？&#xA;究竟何谓正确？&#xA;誰が心まで裁くの？&#xA;谁又能连同内心一并审判？&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;ねえ　命が消える　優しさのせいで&#xA;呐　生命消逝了　皆因那份温柔&#xA;弱さが罪と言うなら答えて&#xA;若说软弱即是罪恶那就回答我&#xA;私は誰を犠牲に生きていい？&#xA;我该牺牲谁来活下去？&#xA;銃口を向ける　間違わないように&#xA;举起枪口　为了不再犯错&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;唇を噛む　滲んだ血の味は誰も同じ&#xA;咬紧嘴唇　渗出的血的滋味对谁都一样&#xA;あなたはとっくに知ってた&#xA;你早就已经知晓&#xA;終わりがない悲しみの行く先を&#xA;那无尽悲伤的去向&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;どんなに怒りを飲み込み&#xA;无论怎样吞咽下怒火&#xA;消してもその火は燃えあがる&#xA;即使扑灭那火焰也会再次燃起&#xA;見据えた眼差しの先は&#xA;凝视的目光前方&#xA;もう決してぶれたりしない&#xA;已经绝不会再有丝毫动摇&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;響く　乾いた銃声&#xA;响起　干脆的枪声&#xA;遠くで聞こえる罵声と絶叫&#xA;远处传来谩骂与绝望的尖叫&#xA;正義を問いかける&#xA;质问着正义&#xA;私と彼ら　どちらが死ねばいい？&#xA;我与他们　究竟哪一方该去死？&#xA;守れるものは一つしかないから&#xA;因为能守护的事物仅有一个&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hello World</title>
-      <link>https://blog.btm-m.site/posts/hello-world/</link>
-      <pubDate>Tue, 24 Feb 2026 16:59:56 +0000</pubDate>
-      <guid>https://blog.btm-m.site/posts/hello-world/</guid>
-      <description>&lt;h1 id=&#34;hello-world&#34;&gt;Hello World&lt;/h1&gt;&#xA;&lt;p&gt;在这里开始写正文。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://ai5.btm-m.site/cover.jpg&#34; alt=&#34;ai5&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

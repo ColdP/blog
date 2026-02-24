@@ -1,7 +1,7 @@
 +++
 title = "当事者"
 date = "2026-02-24T17:44:06.953Z"
-slug = "当事者"
+slug = "dang-shi-zhe"
 tags = ["ryo", "Lyrics", "Music"]
 categories = ["blog"]
 +++
